@@ -51,7 +51,17 @@ namespace Connect.DNN.Powershell.Data
             var s = new Site()
             {
                 Url = url,
-                Token = JsonConvert.SerializeObject(token)
+                Token = JsonConvert.SerializeObject(token).Encrypt()
+            };
+            Sites[key] = s;
+            Globals.SaveString(FilePath, JsonConvert.SerializeObject(this));
+        }
+        public void SetSite(string key, string url, string token)
+        {
+            var s = new Site()
+            {
+                Url = url,
+                Token = token.Encrypt()
             };
             Sites[key] = s;
             Globals.SaveString(FilePath, JsonConvert.SerializeObject(this));

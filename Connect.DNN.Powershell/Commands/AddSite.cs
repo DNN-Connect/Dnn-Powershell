@@ -1,5 +1,4 @@
-﻿using Connect.DNN.Powershell.Data;
-using Connect.DNN.Powershell.Framework;
+﻿using Connect.DNN.Powershell.Framework;
 using System.Management.Automation;
 
 namespace Connect.DNN.Powershell.Commands
@@ -22,11 +21,8 @@ namespace Connect.DNN.Powershell.Commands
         protected override void ProcessRecord()
         {
             WriteVerbose(string.Format("Adding site {0} to your site list", Url));
-            var sites = SiteList.Instance();
-            var token = DnnPromptController.GetToken(Url, Username, Password);
-            WriteVerbose("Authenticated");
-            sites.SetSite(Key, Url, token);
-            WriteVerbose(string.Format("Sites saved to {0}", sites.FilePath));
+            var result = DnnPromptController.GetToken(Key, Url, Username, Password);
+            WriteObject(result);
         }
     }
 }

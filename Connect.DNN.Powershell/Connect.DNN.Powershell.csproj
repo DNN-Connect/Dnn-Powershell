@@ -39,6 +39,7 @@
       <HintPath>packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,17 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CheckSite.cs" />
     <Compile Include="Commands\AddSite.cs" />
     <Compile Include="Commands\ListCommands.cs" />
     <Compile Include="Commands\Models\Command.cs" />
+    <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Data\Site.cs" />
     <Compile Include="Data\SiteList.cs" />
+    <Compile Include="Framework\Models\CommandResult.cs" />
     <Compile Include="Framework\DnnPromptController.cs" />
     <Compile Include="Framework\Models\ConsoleResultModel.cs" />
     <Compile Include="Framework\Models\ConsoleResultModelOfT.cs" />
     <Compile Include="Framework\Models\JwtToken.cs" />
     <Compile Include="Framework\Models\PagingInfo.cs" />
+    <Compile Include="Framework\Models\PromptCommand.cs" />
+    <Compile Include="Framework\ServerResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
