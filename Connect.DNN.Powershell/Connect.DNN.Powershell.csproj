@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Commands\CheckSite.cs" />
     <Compile Include="Commands\AddSite.cs" />
+    <Compile Include="Commands\CurrentSite.cs" />
+    <Compile Include="Commands\UseSite.cs" />
     <Compile Include="Commands\ListCommands.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Common\Extensions.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Framework\DnnPromptController.cs" />
     <Compile Include="Framework\Models\ConsoleResultModel.cs" />
     <Compile Include="Framework\Models\ConsoleResultModelOfT.cs" />
+    <Compile Include="Framework\Models\DnnPromptCmdLet.cs" />
     <Compile Include="Framework\Models\JwtToken.cs" />
     <Compile Include="Framework\Models\PagingInfo.cs" />
     <Compile Include="Framework\Models\PromptCommand.cs" />

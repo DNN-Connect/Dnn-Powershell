@@ -8,6 +8,8 @@ namespace Connect.DNN.Powershell.Framework
 {
     public class DnnPromptController
     {
+        public static string CurrentSiteKey { get; set; }
+
         public static ServerResponse GetToken(string siteKey, string siteUrl, string username, string password)
         {
             var url = string.Format("{0}/DesktopModules/JwtAuth/API/mobile/login", siteUrl);
