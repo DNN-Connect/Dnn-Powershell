@@ -20,6 +20,7 @@ namespace Connect.DNN.Powershell.Commands
 
         protected override void ProcessRecord()
         {
+            Url = Url.TrimEnd('/');
             WriteVerbose(string.Format("Adding site {0} to your site list", Url));
             var result = DnnPromptController.GetToken(Key, Url, Username, Password);
             WriteObject(result);
