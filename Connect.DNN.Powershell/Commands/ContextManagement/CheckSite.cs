@@ -3,7 +3,7 @@ using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
 using System.Management.Automation;
 
-namespace Connect.DNN.Powershell.Commands.SiteManagement
+namespace Connect.DNN.Powershell.Commands.ContextManagement
 {
     [Cmdlet("Check", "Site")]
     public class CheckSite : DnnPromptCmdLet

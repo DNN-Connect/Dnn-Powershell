@@ -6,7 +6,7 @@ namespace Connect.DNN.Powershell.Framework.Models
     public class DnnPromptCmdLet : PSCmdlet
     {
 
-        [Parameter(Position = 0, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string Key { get; set; }
 
         protected Site CmdSite { get; private set; }

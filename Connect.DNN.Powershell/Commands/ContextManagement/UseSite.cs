@@ -3,7 +3,7 @@ using Connect.DNN.Powershell.Data;
 using Connect.DNN.Powershell.Framework;
 using System.Management.Automation;
 
-namespace Connect.DNN.Powershell.Commands.SiteManagement
+namespace Connect.DNN.Powershell.Commands.ContextManagement
 {
     [Cmdlet("Use", "Site")]
     public class UseSite : PSCmdlet
@@ -48,9 +48,10 @@ namespace Connect.DNN.Powershell.Commands.SiteManagement
                 }
                 else
                 {
-                    WriteVerbose(string.Format("Error! Could not log in to site {0}", Url));
+                    WriteWarning(string.Format("Error! Could not log in to site {0}", Url));
                 }
             }
+            WriteObject(DnnPromptController.CurrentSite);
         }
     }
 }

@@ -2,7 +2,7 @@
 using Connect.DNN.Powershell.Framework;
 using System.Management.Automation;
 
-namespace Connect.DNN.Powershell.Commands.SiteManagement
+namespace Connect.DNN.Powershell.Commands.ContextManagement
 {
     [Cmdlet("Add", "Site")]
     public class AddSite: PSCmdlet

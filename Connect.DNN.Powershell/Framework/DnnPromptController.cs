@@ -1,4 +1,5 @@
-﻿using Connect.DNN.Powershell.Common;
+﻿using Connect.DNN.Powershell.Commands.Models;
+using Connect.DNN.Powershell.Common;
 using Connect.DNN.Powershell.Data;
 using Connect.DNN.Powershell.Framework.Models;
 using System.IO;
@@ -9,6 +10,7 @@ namespace Connect.DNN.Powershell.Framework
     public class DnnPromptController
     {
         public static Site CurrentSite { get; set; }
+        public static Portal CurrentPortal { get; set; }
 
         public static ServerResponse GetToken(string siteUrl, string username, string password)
         {

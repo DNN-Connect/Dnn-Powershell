@@ -48,11 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SiteManagement\CheckSite.cs" />
-    <Compile Include="Commands\SiteManagement\AddSite.cs" />
-    <Compile Include="Commands\SiteManagement\CurrentSite.cs" />
-    <Compile Include="Commands\SiteManagement\UseSite.cs" />
-    <Compile Include="Commands\ListCommands.cs" />
+    <Compile Include="Commands\ContextManagement\UsePortal.cs" />
+    <Compile Include="Commands\Models\Portal.cs" />
+    <Compile Include="Commands\Models\PortalBase.cs" />
+    <Compile Include="Commands\Portals\GetPortal.cs" />
+    <Compile Include="Commands\Portals\ListPortals.cs" />
+    <Compile Include="Commands\ContextManagement\CheckSite.cs" />
+    <Compile Include="Commands\ContextManagement\AddSite.cs" />
+    <Compile Include="Commands\ContextManagement\CurrentSite.cs" />
+    <Compile Include="Commands\ContextManagement\UseSite.cs" />
+    <Compile Include="Commands\Commands\ListCommands.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Globals.cs" />
