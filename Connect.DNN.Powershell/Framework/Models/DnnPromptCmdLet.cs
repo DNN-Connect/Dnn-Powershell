@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using Connect.DNN.Powershell.Data;
+using System.Management.Automation;
 
 namespace Connect.DNN.Powershell.Framework.Models
 {
@@ -8,13 +9,25 @@ namespace Connect.DNN.Powershell.Framework.Models
         [Parameter(Position = 0, Mandatory = false)]
         public string Key { get; set; }
 
-        protected bool ParseKey()
+        protected Site CmdSite { get; private set; }
+
+        protected bool FindSite()
         {
             if (string.IsNullOrEmpty(Key))
             {
-                Key = DnnPromptController.CurrentSiteKey;
+                CmdSite = DnnPromptController.CurrentSite;
             }
-            if (string.IsNullOrEmpty(Key))
+            else
+            {
+                try
+                {
+                    CmdSite = SiteList.Instance().Sites[Key];
+                }
+                catch
+                {
+                }
+            }
+            if (CmdSite == null)
             {
                 WriteWarning("No site has been defined");
                 return false;

@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CheckSite.cs" />
-    <Compile Include="Commands\AddSite.cs" />
-    <Compile Include="Commands\CurrentSite.cs" />
-    <Compile Include="Commands\UseSite.cs" />
+    <Compile Include="Commands\SiteManagement\CheckSite.cs" />
+    <Compile Include="Commands\SiteManagement\AddSite.cs" />
+    <Compile Include="Commands\SiteManagement\CurrentSite.cs" />
+    <Compile Include="Commands\SiteManagement\UseSite.cs" />
     <Compile Include="Commands\ListCommands.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Common\Extensions.cs" />

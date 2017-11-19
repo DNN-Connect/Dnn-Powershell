@@ -1,6 +1,6 @@
 ﻿namespace Connect.DNN.Powershell.Framework
 {
-    public enum ServerResponse
+    public enum ServerResponseStatus
     {
         Success,
         Failed,

@@ -1,8 +1,8 @@
 ﻿namespace Connect.DNN.Powershell.Framework.Models
 {
-    public class CommandResult
+    public class ServerResponse
     {
-        public ServerResponse Status { get; set; } = ServerResponse.Success;
+        public ServerResponseStatus Status { get; set; } = ServerResponseStatus.Success;
         public string Contents { get; set; } = "";
     }
 }

@@ -1,7 +1,8 @@
-﻿using Connect.DNN.Powershell.Framework;
+﻿using Connect.DNN.Powershell.Data;
+using Connect.DNN.Powershell.Framework;
 using System.Management.Automation;
 
-namespace Connect.DNN.Powershell.Commands
+namespace Connect.DNN.Powershell.Commands.SiteManagement
 {
     [Cmdlet("Add", "Site")]
     public class AddSite: PSCmdlet
@@ -22,8 +23,10 @@ namespace Connect.DNN.Powershell.Commands
         {
             Url = Url.TrimEnd('/');
             WriteVerbose(string.Format("Adding site {0} to your site list", Url));
-            var result = DnnPromptController.GetToken(Key, Url, Username, Password);
-            WriteObject(result);
+            var result = DnnPromptController.GetToken(Url, Username, Password);
+            var sites = SiteList.Instance();
+            sites.SetSite(Key, Url, result.Contents);
+            WriteObject(result.Status);
         }
     }
 }

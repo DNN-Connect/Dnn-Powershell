@@ -9,11 +9,11 @@ namespace Connect.DNN.Powershell.Commands
     {
         protected override void ProcessRecord()
         {
-            if (!ParseKey()) { return; };
+            if (!FindSite()) { return; };
             WriteVerbose(string.Format("list-commands on {0}", Key));
-            var response = DnnPromptController.ProcessCommand(Key, 5, "list-commands");
+            var response = DnnPromptController.ProcessCommand(CmdSite, 5, "list-commands");
             WriteVerbose(string.Format("Retrieved response {0}", response.Status));
-            if (response.Status == ServerResponse.Success)
+            if (response.Status == ServerResponseStatus.Success)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<Models.Command>>(response.Contents);
                 WriteObject(result.Data);
