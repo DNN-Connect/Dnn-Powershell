@@ -1,30 +1,20 @@
-﻿using Connect.DNN.Powershell.Framework;
+﻿using Connect.DNN.Powershell.Core.Commands;
+using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
 using System.Management.Automation;
 
 namespace Connect.DNN.Powershell.Commands.Roles
 {
     [Cmdlet("List", "Roles")]
-    public class ListRoles : DnnPromptCmdLet
+    public class ListRoles : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = false)]
-        public int PortalId { get; set; } = -1;
-
         protected override void ProcessRecord()
         {
-            if (!FindSite()) { return; };
-            WriteVerbose(string.Format("list-roles on {0} portal {1}", CmdSite.Url, PortalId));
-            var response = DnnPromptController.ProcessCommand(CmdSite, PortalId, 5, "list-roles");
-            WriteVerbose(string.Format("Retrieved response {0}", response.Status));
-            if (response.Status == ServerResponseStatus.Success)
-            {
-                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<Models.RoleBase>>(response.Contents);
-                WriteObject(result.Data);
-            }
-            else
-            {
-                WriteObject(response.Status);
-            }
+            base.ProcessRecord();
+            if (CmdSite == null || CmdPortal == null) { return; };
+            WriteVerbose(string.Format("list-roles on {0} portal {1}", CmdSite.Url, CmdPortal.PortalId));
+            var response = RoleCommands.ListRoles(CmdSite, CmdPortal.PortalId);
+            WriteObject(response);
         }
     }
 }

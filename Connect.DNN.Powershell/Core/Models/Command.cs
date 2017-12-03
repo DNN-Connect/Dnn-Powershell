@@ -1,4 +1,4 @@
-﻿namespace Connect.DNN.Powershell.Commands.Models
+﻿namespace Connect.DNN.Powershell.Core.Models
 {
     public class Command
     {

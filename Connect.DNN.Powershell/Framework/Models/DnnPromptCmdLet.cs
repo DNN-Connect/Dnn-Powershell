@@ -11,13 +11,10 @@ namespace Connect.DNN.Powershell.Framework.Models
 
         protected Site CmdSite { get; private set; }
 
-        protected bool FindSite()
+        protected override void ProcessRecord()
         {
-            if (string.IsNullOrEmpty(Key))
-            {
-                CmdSite = DnnPromptController.CurrentSite;
-            }
-            else
+            CmdSite = DnnPromptController.CurrentSite;
+            if (!string.IsNullOrEmpty(Key))
             {
                 try
                 {
@@ -30,9 +27,7 @@ namespace Connect.DNN.Powershell.Framework.Models
             if (CmdSite == null)
             {
                 WriteWarning("No site has been defined");
-                return false;
             }
-            return true;
         }
     }
 }

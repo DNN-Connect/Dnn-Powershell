@@ -1,5 +1,4 @@
-﻿using Connect.DNN.Powershell.Commands.Models;
-using Connect.DNN.Powershell.Common;
+﻿using Connect.DNN.Powershell.Common;
 using Connect.DNN.Powershell.Data;
 using Connect.DNN.Powershell.Framework.Models;
 using System.IO;
