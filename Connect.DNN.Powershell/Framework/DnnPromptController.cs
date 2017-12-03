@@ -107,9 +107,13 @@ namespace Connect.DNN.Powershell.Framework
 
         public static ServerResponse ProcessCommand(Site site, int retry, string commandLine)
         {
-            return ProcessCommand(site, retry, commandLine, -1);
+            return ProcessCommand(site, -1, retry, commandLine, -1);
         }
-        public static ServerResponse ProcessCommand(Site site, int retry, string commandLine, int currentPage)
+        public static ServerResponse ProcessCommand(Site site, int portalId, int retry, string commandLine)
+        {
+            return ProcessCommand(site, portalId, retry, commandLine, -1);
+        }
+        public static ServerResponse ProcessCommand(Site site, int portalId, int retry, string commandLine, int currentPage)
         {
             var res = new ServerResponse();
             if (retry == 0)
@@ -119,6 +123,10 @@ namespace Connect.DNN.Powershell.Framework
             }
             var token = Newtonsoft.Json.JsonConvert.DeserializeObject<JwtToken>(site.Token.Decrypt());
             var promptUrl = string.Format("{0}/API/PersonaBar/Command/Cmd", site.Url);
+            if (portalId > -1)
+            {
+                promptUrl += string.Format("/{0}", portalId);
+            }
             var request = WebRequest.Create(promptUrl);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = WebRequestMethods.Http.Post;
