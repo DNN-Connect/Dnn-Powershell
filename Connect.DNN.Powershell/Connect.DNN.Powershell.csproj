@@ -48,9 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Application\RestartApplication.cs" />
     <Compile Include="Commands\ContextManagement\UsePortal.cs" />
+    <Compile Include="Commands\Host\ClearCache.cs" />
+    <Compile Include="Commands\Host\GetHost.cs" />
+    <Compile Include="Commands\Models\HostModel.cs" />
     <Compile Include="Commands\Models\Portal.cs" />
     <Compile Include="Commands\Models\PortalBase.cs" />
+    <Compile Include="Commands\Models\RoleBase.cs" />
     <Compile Include="Commands\Portals\GetPortal.cs" />
     <Compile Include="Commands\Portals\ListPortals.cs" />
     <Compile Include="Commands\ContextManagement\CheckSite.cs" />
@@ -59,6 +64,7 @@
     <Compile Include="Commands\ContextManagement\UseSite.cs" />
     <Compile Include="Commands\Commands\ListCommands.cs" />
     <Compile Include="Commands\Models\Command.cs" />
+    <Compile Include="Commands\Roles\ListRoles.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Data\Site.cs" />
@@ -77,5 +83,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
