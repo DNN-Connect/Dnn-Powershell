@@ -76,6 +76,7 @@
     <Compile Include="Data\SiteList.cs" />
     <Compile Include="Core\Commands\PortalCommands.cs" />
     <Compile Include="Core\Commands\RoleCommands.cs" />
+    <Compile Include="Framework\Models\BaseCmdLet.cs" />
     <Compile Include="Framework\Models\CommandResult.cs" />
     <Compile Include="Framework\DnnPromptController.cs" />
     <Compile Include="Framework\Models\ConsoleResultModel.cs" />

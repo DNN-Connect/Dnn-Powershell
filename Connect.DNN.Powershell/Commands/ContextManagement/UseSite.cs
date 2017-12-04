@@ -4,11 +4,12 @@ using Connect.DNN.Powershell.Framework;
 using System.Management.Automation;
 using System.Linq;
 using Connect.DNN.Powershell.Core.Commands;
+using Connect.DNN.Powershell.Framework.Models;
 
 namespace Connect.DNN.Powershell.Commands.ContextManagement
 {
     [Cmdlet("Use", "Site")]
-    public class UseSite : PSCmdlet
+    public class UseSite : BaseCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "keyonly")]
         public string Key { get; set; }
@@ -30,6 +31,19 @@ namespace Connect.DNN.Powershell.Commands.ContextManagement
                 var site = SiteList.Instance().Sites[Key];
                 if (site != null)
                 {
+                    if (System.DateTime.Now.AddHours(1) > site.Expires)
+                    {
+                        var res =CheckSite(site, Key);
+                        if (res == ServerResponseStatus.Success)
+                        {
+                            site = SiteList.Instance().Sites[Key];
+                        }
+                        else
+                        {
+                            WriteWarning(string.Format("Error! Could not switch to site {0} because the login failed.", site.Url));
+                            return;
+                        }
+                    }
                     var result = DnnPromptController.ProcessCommand(site, 5, "echo Hello World");
                     if (result.Status == ServerResponseStatus.Success)
                     {
@@ -57,7 +71,8 @@ namespace Connect.DNN.Powershell.Commands.ContextManagement
                     DnnPromptController.CurrentSite = new Site()
                     {
                         Url = Url,
-                        Token = result.Contents.Encrypt()
+                        Token = result.Contents.Encrypt(),
+                        Expires = System.DateTime.Now.AddDays(14)
                     };
                     WriteVerbose(string.Format("Success! Switched to site {0}", Url));
                 }

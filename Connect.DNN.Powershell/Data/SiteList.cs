@@ -48,21 +48,37 @@ namespace Connect.DNN.Powershell.Data
 
         public void SetSite(string key, string url, JwtToken token)
         {
+            SetSite(key, url, token, false);
+        }
+        public void SetSite(string key, string url, JwtToken token, bool newToken)
+        {
             var s = new Site()
             {
                 Url = url,
                 Token = JsonConvert.SerializeObject(token).Encrypt()
             };
+            if (newToken)
+            {
+                s.Expires = DateTime.Now.AddDays(14);
+            }
             Sites[key] = s;
             Globals.SaveString(FilePath, JsonConvert.SerializeObject(this));
         }
         public void SetSite(string key, string url, string token)
+        {
+            SetSite(key, url, token, false);
+        }
+        public void SetSite(string key, string url, string token, bool newToken)
         {
             var s = new Site()
             {
                 Url = url,
                 Token = token.Encrypt()
             };
+            if (newToken)
+            {
+                s.Expires = DateTime.Now.AddDays(14);
+            }
             Sites[key] = s;
             Globals.SaveString(FilePath, JsonConvert.SerializeObject(this));
         }

@@ -1,9 +1,11 @@
-﻿using Connect.DNN.Powershell.Data;
+﻿using Connect.DNN.Powershell.Common;
+using Connect.DNN.Powershell.Data;
 using System.Management.Automation;
+using System.Security;
 
 namespace Connect.DNN.Powershell.Framework.Models
 {
-    public class DnnPromptCmdLet : PSCmdlet
+    public class DnnPromptCmdLet : BaseCmdLet
     {
 
         [Parameter(Mandatory = false)]
@@ -27,6 +29,11 @@ namespace Connect.DNN.Powershell.Framework.Models
             if (CmdSite == null)
             {
                 WriteWarning("No site has been defined");
+                return;
+            }
+            if (System.DateTime.Now.AddHours(1) > CmdSite.Expires)
+            {
+                CheckSite(CmdSite, Key);
             }
         }
     }

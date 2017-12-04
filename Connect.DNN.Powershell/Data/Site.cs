@@ -9,6 +9,8 @@ namespace Connect.DNN.Powershell.Data
         public string Url { get; set; }
         [JsonProperty(PropertyName = "token")]
         public string Token { get; set; }
+        [JsonProperty(PropertyName = "expires")]
+        public System.DateTime Expires { get; set; }
         [JsonIgnore]
         public int PortalId { get; set; }
         [JsonIgnore]
