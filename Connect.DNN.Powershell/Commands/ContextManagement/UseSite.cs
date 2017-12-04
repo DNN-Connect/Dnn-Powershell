@@ -31,10 +31,16 @@ namespace Connect.DNN.Powershell.Commands.ContextManagement
                 if (site != null)
                 {
                     var result = DnnPromptController.ProcessCommand(site, 5, "echo Hello World");
-                    DnnPromptController.CurrentSite = site;
-                    WriteVerbose(string.Format("Switched to site {0}", Key));
-                    DnnPromptController.CurrentPortal = site.Portals[site.PortalId];
-                    WriteVerbose(string.Format("Switched to portal {0}", site.PortalId));
+                    if (result.Status == ServerResponseStatus.Success)
+                    {
+                        DnnPromptController.CurrentSite = site;
+                        WriteVerbose(string.Format("Switched to site {0}", Key));
+                    }
+                    else
+                    {
+                        WriteWarning(string.Format("Error! Could not switch to site {0}", site.Url));
+                        return;
+                    }
                 }
                 else
                 {
