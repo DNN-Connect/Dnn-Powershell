@@ -162,7 +162,21 @@ namespace Connect.DNN.Powershell.Framework
                             res.Status = renew.Status;
                             return res;
                         }
-                        return ProcessCommand(site, retry - 1, commandLine);
+                        site.Token = renew.Contents.Encrypt();
+                        var sites = SiteList.Instance();
+                        var listKey = "";
+                        foreach (var s in sites.Sites)
+                        {
+                            if (s.Value.Url == site.Url)
+                            {
+                                listKey = s.Key;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(listKey))
+                        {
+                            sites.SetSite(listKey, site.Url, renew.Contents);
+                        }
+                        return ProcessCommand(site, portalId, retry - 1, commandLine, currentPage);
                     default:
                         res.Status = ServerResponseStatus.Error;
                         return res;
