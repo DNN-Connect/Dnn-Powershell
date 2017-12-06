@@ -1,5 +1,4 @@
-﻿using Connect.DNN.Powershell.Core.Models;
-using Connect.DNN.Powershell.Framework;
+﻿using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
 
 namespace Connect.DNN.Powershell.Core.Commands
