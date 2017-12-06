@@ -14,16 +14,16 @@ namespace Connect.DNN.Powershell.Commands.Module
         public string ModuleTitle { get; set; }
 
         [Parameter(Mandatory = false)]
-        public int PageId { get; set; }
+        public int? PageId { get; set; }
 
         [Parameter(Mandatory = false)]
         public bool? Deleted { get; set; }
 
         [Parameter(Mandatory = false)]
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         [Parameter(Mandatory = false)]
-        public int Max { get; set; }
+        public int? Max { get; set; }
 
         protected override void ProcessRecord()
         {

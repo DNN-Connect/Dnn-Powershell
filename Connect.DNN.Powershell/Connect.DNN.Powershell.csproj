@@ -59,6 +59,12 @@
     <Compile Include="Commands\Module\GetModule.cs" />
     <Compile Include="Commands\Module\ListModules.cs" />
     <Compile Include="Commands\Module\MoveModule.cs" />
+    <Compile Include="Commands\Page\DeletePage.cs" />
+    <Compile Include="Commands\Page\GetPage.cs" />
+    <Compile Include="Commands\Page\GetPageUrl.cs" />
+    <Compile Include="Commands\Page\ListPages.cs" />
+    <Compile Include="Commands\Page\NewPage.cs" />
+    <Compile Include="Commands\Page\SetPage.cs" />
     <Compile Include="Commands\Roles\DeleteRole.cs" />
     <Compile Include="Commands\Roles\GetRole.cs" />
     <Compile Include="Commands\Roles\NewRole.cs" />
@@ -67,9 +73,12 @@
     <Compile Include="Core\Commands\CommandCommands.cs" />
     <Compile Include="Core\Commands\HostCommands.cs" />
     <Compile Include="Core\Commands\ModuleCommands.cs" />
+    <Compile Include="Core\Commands\PageCommands.cs" />
     <Compile Include="Core\Models\HostModel.cs" />
     <Compile Include="Core\Models\ModuleInfoModel.cs" />
     <Compile Include="Core\Models\ModuleInstanceModel.cs" />
+    <Compile Include="Core\Models\PageModel.cs" />
+    <Compile Include="Core\Models\PageModelBase.cs" />
     <Compile Include="Core\Models\Portal.cs" />
     <Compile Include="Core\Models\PortalBase.cs" />
     <Compile Include="Core\Models\RoleModelBase.cs" />

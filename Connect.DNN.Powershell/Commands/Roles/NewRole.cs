@@ -14,10 +14,10 @@ namespace Connect.DNN.Powershell.Commands.Roles
         public string Description { get; set; }
 
         [Parameter(Mandatory = false)]
-        public bool Public { get; set; }
+        public bool? Public { get; set; }
 
         [Parameter(Mandatory = false)]
-        public bool AutoAssign { get; set; }
+        public bool? AutoAssign { get; set; }
 
         [Parameter(Mandatory = false)]
         public string Status { get; set; }
