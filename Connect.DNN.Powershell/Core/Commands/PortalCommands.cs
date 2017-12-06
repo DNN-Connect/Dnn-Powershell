@@ -23,5 +23,15 @@ namespace Connect.DNN.Powershell.Core.Commands
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<PortalBase>>(response.Contents);
             return result.Data;
         }
+        public static Portal ClearLog(Data.Site site)
+        {
+            return ClearLog(site, -1);
+        }
+        public static Portal ClearLog(Data.Site site, int portalId)
+        {
+            var response = DnnPromptController.ProcessCommand(site, portalId, 5, "get-portal");
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<Portal>>(response.Contents);
+            return result.Data[0];
+        }
     }
 }

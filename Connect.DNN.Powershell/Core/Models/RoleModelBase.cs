@@ -1,6 +1,6 @@
 ﻿namespace Connect.DNN.Powershell.Core.Models
 {
-    public class RoleBase
+    public class RoleModelBase
     {
         public int RoleId { get; set; }
         public int RoleGroupId { get; set; }

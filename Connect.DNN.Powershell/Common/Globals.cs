@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Connect.DNN.Powershell.Common
 {
@@ -22,5 +23,15 @@ namespace Connect.DNN.Powershell.Common
                 sw.Flush();
             }
         }
+        public static T ToEnum<T>(string value, T defaultValue) where T: struct
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return defaultValue;
+            }
+            T result;
+            return Enum.TryParse<T>(value, true, out result) ? result : defaultValue;
+        }
+
     }
 }

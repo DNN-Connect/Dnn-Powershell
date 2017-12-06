@@ -49,6 +49,5 @@ namespace Connect.DNN.Powershell.Common
             }
             return result;
         }
-
     }
 }
