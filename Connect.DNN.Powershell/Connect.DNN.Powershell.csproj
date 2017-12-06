@@ -75,6 +75,9 @@
     <Compile Include="Commands\Roles\GetRole.cs" />
     <Compile Include="Commands\Roles\NewRole.cs" />
     <Compile Include="Commands\Roles\SetRole.cs" />
+    <Compile Include="Commands\TaskScheduler\GetTask.cs" />
+    <Compile Include="Commands\TaskScheduler\ListTasks.cs" />
+    <Compile Include="Commands\TaskScheduler\SetTask.cs" />
     <Compile Include="Commands\User\AddRoles.cs" />
     <Compile Include="Commands\User\DeleteUser.cs" />
     <Compile Include="Commands\User\GetUser.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Core\Commands\ModuleCommands.cs" />
     <Compile Include="Core\Commands\PageCommands.cs" />
     <Compile Include="Core\Commands\RecyclebinCommands.cs" />
+    <Compile Include="Core\Commands\TaskSchedulerCommands.cs" />
     <Compile Include="Core\Commands\UserCommands.cs" />
     <Compile Include="Core\Models\HostModel.cs" />
     <Compile Include="Core\Models\ModuleInfoModel.cs" />
@@ -109,6 +113,8 @@
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Core\Models\RoleModel.cs" />
+    <Compile Include="Core\Models\TaskModel.cs" />
+    <Compile Include="Core\Models\TaskModelBase.cs" />
     <Compile Include="Core\Models\UserModel.cs" />
     <Compile Include="Core\Models\UserModelBase.cs" />
     <Compile Include="Core\Models\UserRoleModel.cs" />
