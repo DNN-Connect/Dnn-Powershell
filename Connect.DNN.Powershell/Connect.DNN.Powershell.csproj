@@ -65,6 +65,12 @@
     <Compile Include="Commands\Page\ListPages.cs" />
     <Compile Include="Commands\Page\NewPage.cs" />
     <Compile Include="Commands\Page\SetPage.cs" />
+    <Compile Include="Commands\RecycleBin\PurgeModule.cs" />
+    <Compile Include="Commands\RecycleBin\PurgePage.cs" />
+    <Compile Include="Commands\RecycleBin\PurgeUser.cs" />
+    <Compile Include="Commands\RecycleBin\RestoreModule.cs" />
+    <Compile Include="Commands\RecycleBin\RestorePage.cs" />
+    <Compile Include="Commands\RecycleBin\RestoreUser.cs" />
     <Compile Include="Commands\Roles\DeleteRole.cs" />
     <Compile Include="Commands\Roles\GetRole.cs" />
     <Compile Include="Commands\Roles\NewRole.cs" />
@@ -74,6 +80,7 @@
     <Compile Include="Core\Commands\HostCommands.cs" />
     <Compile Include="Core\Commands\ModuleCommands.cs" />
     <Compile Include="Core\Commands\PageCommands.cs" />
+    <Compile Include="Core\Commands\RecyclebinCommands.cs" />
     <Compile Include="Core\Models\HostModel.cs" />
     <Compile Include="Core\Models\ModuleInfoModel.cs" />
     <Compile Include="Core\Models\ModuleInstanceModel.cs" />
