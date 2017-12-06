@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93036E5C-63DA-4EC4-963A-B86033C2B379}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Connect.DNN.Powershell</RootNamespace>
+    <AssemblyName>Connect.DNN.Powershell</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\WindowsPowerShell\DNN\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Application\RestartApplication.cs" />
+    <Compile Include="Commands\ContextManagement\CurrentPortal.cs" />
+    <Compile Include="Commands\ContextManagement\UsePortal.cs" />
+    <Compile Include="Commands\Host\ClearCache.cs" />
+    <Compile Include="Commands\Host\GetHost.cs" />
+    <Compile Include="Commands\Module\AddModule.cs" />
+    <Compile Include="Commands\Module\CopyModule.cs" />
+    <Compile Include="Commands\Module\DeleteModule.cs" />
+    <Compile Include="Commands\Module\GetModule.cs" />
+    <Compile Include="Commands\Module\ListModules.cs" />
+    <Compile Include="Commands\Module\MoveModule.cs" />
+    <Compile Include="Commands\Page\DeletePage.cs" />
+    <Compile Include="Commands\Page\GetPage.cs" />
+    <Compile Include="Commands\Page\GetPageUrl.cs" />
+    <Compile Include="Commands\Page\ListPages.cs" />
+    <Compile Include="Commands\Page\NewPage.cs" />
+    <Compile Include="Commands\Page\SetPage.cs" />
+    <Compile Include="Commands\RecycleBin\PurgeModule.cs" />
+    <Compile Include="Commands\RecycleBin\PurgePage.cs" />
+    <Compile Include="Commands\RecycleBin\PurgeUser.cs" />
+    <Compile Include="Commands\RecycleBin\RestoreModule.cs" />
+    <Compile Include="Commands\RecycleBin\RestorePage.cs" />
+    <Compile Include="Commands\RecycleBin\RestoreUser.cs" />
+    <Compile Include="Commands\Roles\DeleteRole.cs" />
+    <Compile Include="Commands\Roles\GetRole.cs" />
+    <Compile Include="Commands\Roles\NewRole.cs" />
+    <Compile Include="Commands\Roles\SetRole.cs" />
+    <Compile Include="Commands\TaskScheduler\GetTask.cs" />
+    <Compile Include="Commands\TaskScheduler\ListTasks.cs" />
+    <Compile Include="Commands\TaskScheduler\SetTask.cs" />
+    <Compile Include="Commands\User\AddRoles.cs" />
+    <Compile Include="Commands\User\DeleteUser.cs" />
+    <Compile Include="Commands\User\GetUser.cs" />
+    <Compile Include="Commands\User\ListUsers.cs" />
+    <Compile Include="Commands\User\NewUser.cs" />
+    <Compile Include="Commands\User\ResetPassword.cs" />
+    <Compile Include="Commands\User\SetUser.cs" />
+    <Compile Include="Core\Commands\ApplicationCommands.cs" />
+    <Compile Include="Core\Commands\CommandCommands.cs" />
+    <Compile Include="Core\Commands\HostCommands.cs" />
+    <Compile Include="Core\Commands\ModuleCommands.cs" />
+    <Compile Include="Core\Commands\PageCommands.cs" />
+    <Compile Include="Core\Commands\RecyclebinCommands.cs" />
+    <Compile Include="Core\Commands\TaskSchedulerCommands.cs" />
+    <Compile Include="Core\Commands\UserCommands.cs" />
+    <Compile Include="Core\Models\HostModel.cs" />
+    <Compile Include="Core\Models\ModuleInfoModel.cs" />
+    <Compile Include="Core\Models\ModuleInstanceModel.cs" />
+    <Compile Include="Core\Models\PageModel.cs" />
+    <Compile Include="Core\Models\PageModelBase.cs" />
+    <Compile Include="Core\Models\Portal.cs" />
+    <Compile Include="Core\Models\PortalBase.cs" />
+    <Compile Include="Core\Models\RoleModelBase.cs" />
+    <Compile Include="Commands\Portal\GetPortal.cs" />
+    <Compile Include="Commands\Portal\ListPortals.cs" />
+    <Compile Include="Commands\ContextManagement\CheckSite.cs" />
+    <Compile Include="Commands\ContextManagement\AddSite.cs" />
+    <Compile Include="Commands\ContextManagement\CurrentSite.cs" />
+    <Compile Include="Commands\ContextManagement\UseSite.cs" />
+    <Compile Include="Commands\Commands\ListCommands.cs" />
+    <Compile Include="Core\Models\Command.cs" />
+    <Compile Include="Commands\Roles\ListRoles.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\Globals.cs" />
+    <Compile Include="Core\Models\RoleModel.cs" />
+    <Compile Include="Core\Models\TaskModel.cs" />
+    <Compile Include="Core\Models\TaskModelBase.cs" />
+    <Compile Include="Core\Models\UserModel.cs" />
+    <Compile Include="Core\Models\UserModelBase.cs" />
+    <Compile Include="Core\Models\UserRoleModel.cs" />
+    <Compile Include="Data\Portal.cs" />
+    <Compile Include="Data\Site.cs" />
+    <Compile Include="Data\SiteList.cs" />
+    <Compile Include="Core\Commands\PortalCommands.cs" />
+    <Compile Include="Core\Commands\RoleCommands.cs" />
+    <Compile Include="Framework\Models\BaseCmdLet.cs" />
+    <Compile Include="Framework\Models\CommandResult.cs" />
+    <Compile Include="Framework\DnnPromptController.cs" />
+    <Compile Include="Framework\Models\ConsoleResultModel.cs" />
+    <Compile Include="Framework\Models\ConsoleResultModelOfT.cs" />
+    <Compile Include="Framework\Models\DnnPromptCmdLet.cs" />
+    <Compile Include="Framework\Models\DnnPromptPortalCmdLet.cs" />
+    <Compile Include="Framework\Models\JwtToken.cs" />
+    <Compile Include="Framework\Models\PagingInfo.cs" />
+    <Compile Include="Framework\Models\PromptCommand.cs" />
+    <Compile Include="Framework\ServerResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
