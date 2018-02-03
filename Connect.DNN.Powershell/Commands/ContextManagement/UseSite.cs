@@ -17,10 +17,10 @@ namespace Connect.DNN.Powershell.Commands.ContextManagement
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "fullsite")]
         public string Url { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = "fullsite")]
+        [Parameter(Position = 1, Mandatory = false, ParameterSetName = "fullsite")]
         public string Username { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = "fullsite")]
+        [Parameter(Position = 2, Mandatory = false, ParameterSetName = "fullsite")]
         public string Password { get; set; }
 
         protected override void ProcessRecord()
@@ -65,6 +65,12 @@ namespace Connect.DNN.Powershell.Commands.ContextManagement
             else
             {
                 WriteVerbose(string.Format("Setting site to {0}", Url));
+                if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+                {
+                    var creds = GetLogin();
+                    Username = creds.Username;
+                    Password = creds.Password.ToUnsecureString();
+                }
                 var result = DnnPromptController.GetToken(Url, Username, Password);
                 if (result.Status == ServerResponseStatus.Success)
                 {
