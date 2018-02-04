@@ -19,7 +19,7 @@ namespace Connect.DNN.Powershell.Commands.TaskScheduler
             if (CmdSite == null || CmdPortal == null) { return; };
             WriteVerbose(string.Format("list-tasks on {0} portal {1}", CmdSite.Url, CmdPortal.PortalId));
             var response = TaskSchedulerCommands.ListTasks(CmdSite, CmdPortal.PortalId, Enabled, TaskName);
-            WriteObject(response);
+            WriteArray(response);
         }
     }
 }

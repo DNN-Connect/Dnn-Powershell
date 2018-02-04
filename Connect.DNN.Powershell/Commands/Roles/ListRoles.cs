@@ -13,7 +13,7 @@ namespace Connect.DNN.Powershell.Commands.Roles
             if (CmdSite == null || CmdPortal == null) { return; };
             WriteVerbose(string.Format("list-roles on {0} portal {1}", CmdSite.Url, CmdPortal.PortalId));
             var response = RoleCommands.ListRoles(CmdSite, CmdPortal.PortalId);
-            WriteObject(response);
+            WriteArray(response);
         }
     }
 }

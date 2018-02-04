@@ -13,7 +13,7 @@ namespace Connect.DNN.Powershell.Commands.Portal
             if (CmdSite == null) { return; };
             WriteVerbose(string.Format("list-portals on {0}", CmdSite.Url));
             var response = PortalCommands.ListPortals(CmdSite);
-            WriteObject(response);
+            WriteArray(response);
         }
     }
 }

@@ -39,5 +39,13 @@ namespace Connect.DNN.Powershell.Framework.Models
             var password = (SecureString)res[0].BaseObject;
             return new Credentials() { Username = username, Password = password };
         }
+
+        public void WriteArray(object[] response)
+        {
+            foreach (var obj in response )
+            {
+                WriteObject(obj);
+            }
+        }
     }
 }

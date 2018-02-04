@@ -40,7 +40,7 @@ namespace Connect.DNN.Powershell.Commands.Page
             if (CmdSite == null || CmdPortal == null) { return; };
             WriteVerbose(string.Format("list-pages on {0} portal {1}", CmdSite.Url, CmdPortal.PortalId));
             var response = PageCommands.ListPages(CmdSite, CmdPortal.PortalId, ParentId, Deleted, PageName, PageTitle, Path, Skin, Visible, Page, Max);
-            WriteObject(response);
+            WriteArray(response);
         }
     }
 }
