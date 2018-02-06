@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connect.DNN.Powershell.Framework.Models;
+using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -48,6 +49,14 @@ namespace Connect.DNN.Powershell.Common
                 }
             }
             return result;
+        }
+
+        public static void AssertValidConsoleResponse<T>(this ConsoleResultModel<T> result)
+        {
+            if (result.IsError)
+            {
+                throw new InvalidOperationException(result.Output);
+            }
         }
     }
 }

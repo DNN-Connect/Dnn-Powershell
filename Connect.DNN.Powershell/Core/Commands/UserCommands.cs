@@ -1,6 +1,8 @@
-﻿using Connect.DNN.Powershell.Core.Models;
+﻿using Connect.DNN.Powershell.Common;
+using Connect.DNN.Powershell.Core.Models;
 using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
+using System;
 
 namespace Connect.DNN.Powershell.Core.Commands
 {
@@ -13,6 +15,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += end == null ? "" : string.Format(" --start {0:yyyy-MM-dd}", end);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserRoleModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data;
         }
         public static UserModel DeleteUser(Data.Site site, int portalId, int userId, bool? notify)
@@ -21,6 +24,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += notify == null ? "" : string.Format(" --notify {0}", notify);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
         public static UserModel GetUser(Data.Site site, int portalId, int? userId, string email, string username)
@@ -31,6 +35,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(username) ? "" : string.Format(" --username {0}", username);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
         public static UserModelBase[] ListUsers(Data.Site site, int portalId, string email, string username, string role, int? page, int? max)
@@ -43,6 +48,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += max == null ? "" : string.Format(" --max {0}", max);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserModelBase>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data;
         }
         public static UserModel NewUser(Data.Site site, int portalId, string email, string username, string firstname, string lastname, string password, bool? approved, bool? notify)
@@ -53,6 +59,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += notify == null ? "" : string.Format(" --notify {0}", notify);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
         public static string ResetPassword(Data.Site site, int portalId, int userId, bool? notify)
@@ -61,10 +68,11 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += notify == null ? "" : string.Format(" --notify {0}", notify);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static UserModel SetUser(Data.Site site, int portalId, int userId, string email, string username, string displayname, string firstname, string lastname, string password, bool? approved)
-        {
+        { 
             var cmd = string.Format("set-user --id {0}", userId);
             cmd += string.IsNullOrEmpty(email) ? "" : string.Format(" --email {0}", email);
             cmd += string.IsNullOrEmpty(username) ? "" : string.Format(" --username {0}", username);
@@ -75,7 +83,8 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += approved == null ? "" : string.Format(" --approved {0}", approved);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<UserModel>>(response.Contents);
-            return result.Data[0];
+            result.AssertValidConsoleResponse();
+            return result?.Data[0];
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Connect.DNN.Powershell.Framework;
+﻿using Connect.DNN.Powershell.Common;
+using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
 
 namespace Connect.DNN.Powershell.Core.Commands
@@ -10,6 +11,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("purge-module --id {0} --pageid {1}", moduleId, pageId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static string PurgePage(Data.Site site, int portalId, int pageId, bool? deleteChildren)
@@ -18,6 +20,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += deleteChildren == null ? "" : string.Format(" --deletechildren {0}", deleteChildren);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static string PurgeUser(Data.Site site, int portalId, int userId)
@@ -25,6 +28,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("purge-user --id {0}", userId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static string RestoreModule(Data.Site site, int portalId, int moduleId, int pageId)
@@ -32,6 +36,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("restore-module --id {0} --pageid {1}", moduleId, pageId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static string RestorePage(Data.Site site, int portalId, int? pageId, string pageName, int? parentId)
@@ -42,6 +47,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += parentId == null ? "" : string.Format(" --parentid {0}", parentId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static string RestoreUser(Data.Site site, int portalId, int userId)
@@ -49,6 +55,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("restore-user --id {0}", userId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
     }

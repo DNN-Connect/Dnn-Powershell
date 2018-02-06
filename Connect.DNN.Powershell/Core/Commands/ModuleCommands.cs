@@ -1,4 +1,5 @@
-﻿using Connect.DNN.Powershell.Core.Models;
+﻿using Connect.DNN.Powershell.Common;
+using Connect.DNN.Powershell.Core.Models;
 using Connect.DNN.Powershell.Framework;
 using Connect.DNN.Powershell.Framework.Models;
 
@@ -13,6 +14,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(moduleTitle) ? "" : string.Format(" --title {0}", moduleTitle);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<ModuleInstanceModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data;
         }
         public static ModuleInfoModel CopyModule(Data.Site site, int portalId, int moduleId, int pageId, int toPageId, string paneName, bool? includeSettings)
@@ -22,6 +24,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += includeSettings == null ? "" : string.Format(" --includesettings {0}", includeSettings);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<ModuleInfoModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
         public static string DeleteModule(Data.Site site, int portalId, int moduleId, int pageId)
@@ -29,6 +32,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("copy-module --id {0} --pageid {1}", moduleId, pageId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<object>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Output;
         }
         public static ModuleInfoModel GetModule(Data.Site site, int portalId, int moduleId, int pageId)
@@ -36,6 +40,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             var cmd = string.Format("get-module --id {0} --pageid {1}", moduleId, pageId);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<ModuleInfoModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
         public static ModuleInfoModel[] ListModules(Data.Site site, int portalId, string moduleName, string moduleTitle, int? pageId, bool? deleted, int? page, int? max)
@@ -49,6 +54,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += max == null ? "" : string.Format(" --max {0}", max);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<ModuleInfoModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data;
         }
         public static ModuleInfoModel MoveModule(Data.Site site, int portalId, int moduleId, int pageId, int toPageId, string paneName)
@@ -57,6 +63,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(paneName) ? "" : string.Format(" --pane {0}", paneName);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<ModuleInfoModel>>(response.Contents);
+            result.AssertValidConsoleResponse();
             return result.Data[0];
         }
 
