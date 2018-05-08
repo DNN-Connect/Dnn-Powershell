@@ -77,8 +77,8 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(email) ? "" : string.Format(" --email {0}", email);
             cmd += string.IsNullOrEmpty(username) ? "" : string.Format(" --username {0}", username);
             cmd += string.IsNullOrEmpty(displayname) ? "" : string.Format(" --displayname {0}", displayname);
-            cmd += string.IsNullOrEmpty(firstname) ? "" : string.Format(" --firstname {0}", firstname);
-            cmd += string.IsNullOrEmpty(lastname) ? "" : string.Format(" --lastname {0}", lastname);
+            cmd += string.Format(" --firstname {0}", firstname);
+            cmd += string.Format(" --lastname {0}", lastname);
             cmd += string.IsNullOrEmpty(password) ? "" : string.Format(" --password {0}", password);
             cmd += approved == null ? "" : string.Format(" --approved {0}", approved);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
