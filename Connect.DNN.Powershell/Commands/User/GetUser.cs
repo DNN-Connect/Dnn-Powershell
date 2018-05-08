@@ -7,13 +7,13 @@ namespace Connect.DNN.Powershell.Commands.User
     [Cmdlet("Get", "User")]
     public class GetUser : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int UserId { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Email { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Username { get; set; }
 
         protected override void ProcessRecord()

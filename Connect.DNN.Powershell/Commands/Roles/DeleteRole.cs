@@ -7,7 +7,7 @@ namespace Connect.DNN.Powershell.Commands.Roles
     [Cmdlet("Delete", "Role")]
     public class DeleteRole : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int RoleId { get; set; }
 
         protected override void ProcessRecord()

@@ -7,7 +7,7 @@ namespace Connect.DNN.Powershell.Commands.Roles
     [Cmdlet("Get", "Role")]
     public class GetRole : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int RoleId { get; set; }
 
         protected override void ProcessRecord()

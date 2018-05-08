@@ -7,10 +7,10 @@ namespace Connect.DNN.Powershell.Commands.TaskScheduler
     [Cmdlet("List", "Tasks")]
     public class ListTasks : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public bool? Enabled { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string TaskName { get; set; }
 
         protected override void ProcessRecord()

@@ -7,10 +7,10 @@ namespace Connect.DNN.Powershell.Commands.User
     [Cmdlet("Reset", "Password")]
     public class ResetPassword : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int UserId { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public bool? Notify { get; set; }
 
         protected override void ProcessRecord()

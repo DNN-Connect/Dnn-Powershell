@@ -7,10 +7,10 @@ namespace Connect.DNN.Powershell.Commands.RecycleBin
     [Cmdlet("Purge", "Page")]
     public class PurgePage : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int PageId { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public bool? DeleteChildren { get; set; }
 
         protected override void ProcessRecord()

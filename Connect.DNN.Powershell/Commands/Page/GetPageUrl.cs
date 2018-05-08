@@ -7,13 +7,13 @@ namespace Connect.DNN.Powershell.Commands.Page
     [Cmdlet("Get", "PageUrl")]
     public class GetPageUrl : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int? PageId { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string PageName { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public int? ParentId { get; set; }
 
         protected override void ProcessRecord()

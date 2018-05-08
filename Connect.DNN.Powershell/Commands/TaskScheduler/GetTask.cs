@@ -7,7 +7,7 @@ namespace Connect.DNN.Powershell.Commands.TaskScheduler
     [Cmdlet("Get", "Task")]
     public class GetTask : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int TaskId { get; set; }
 
         protected override void ProcessRecord()

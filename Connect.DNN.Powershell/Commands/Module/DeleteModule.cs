@@ -7,10 +7,10 @@ namespace Connect.DNN.Powershell.Commands.Module
     [Cmdlet("Delete", "DnnModule")]
     public class DeleteModule : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int ModuleId { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public int PageId { get; set; }
 
         protected override void ProcessRecord()

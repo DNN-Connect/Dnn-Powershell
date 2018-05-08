@@ -7,7 +7,7 @@ namespace Connect.DNN.Powershell.Commands.RecycleBin
     [Cmdlet("Purge", "User")]
     public class PurgeUser : DnnPromptPortalCmdLet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public int UserId { get; set; }
 
         protected override void ProcessRecord()
