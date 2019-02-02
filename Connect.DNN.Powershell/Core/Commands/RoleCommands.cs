@@ -34,7 +34,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(description) ? "" : string.Format(" --description {0}", description);
             cmd += isPublic == null ? "" : string.Format(" --public {0}", isPublic);
             cmd += autoAssign == null ? "" : string.Format(" --autoassign {0}", autoAssign);
-            cmd += status == null ? "" : string.Format(" --status {0}", status.ToString());
+            cmd += status == null ? "" : string.Format(" --status {0}", status.ToString().ToLower());
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<RoleModel>>(response.Contents);
             result.AssertValidConsoleResponse();
@@ -47,7 +47,7 @@ namespace Connect.DNN.Powershell.Core.Commands
             cmd += string.IsNullOrEmpty(description) ? "" : string.Format(" --description {0}", description);
             cmd += isPublic == null ? "" : string.Format(" --public {0}", isPublic);
             cmd += autoAssign == null ? "" : string.Format(" --autoassign {0}", autoAssign);
-            cmd += status == null ? "" : string.Format(" --status {0}", status.ToString());
+            cmd += status == null ? "" : string.Format(" --status {0}", status.ToString().ToLower());
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ConsoleResultModel<RoleModel>>(response.Contents);
             result.AssertValidConsoleResponse();
