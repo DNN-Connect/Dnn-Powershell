@@ -30,7 +30,7 @@ namespace Connect.DNN.Powershell.Core.Commands
         public static UserModel GetUser(Data.Site site, int portalId, int? userId, string email, string username)
         {
             var cmd = string.Format("get-user");
-            cmd += userId == null ? "" : string.Format(" --id {0}", userId);
+            cmd += userId == 0 ? "" : string.Format(" --id {0}", userId);
             cmd += string.IsNullOrEmpty(email) ? "" : string.Format(" --email {0}", email);
             cmd += string.IsNullOrEmpty(username) ? "" : string.Format(" --username {0}", username);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
