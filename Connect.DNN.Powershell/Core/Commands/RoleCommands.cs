@@ -30,8 +30,8 @@ namespace Connect.DNN.Powershell.Core.Commands
         }
         public static RoleModel NewRole(Data.Site site, int portalId, string roleName, string description, bool? isPublic, bool? autoAssign, RoleStatus? status)
         {
-            var cmd = string.Format("new-role --name {0}", roleName);
-            cmd += string.IsNullOrEmpty(description) ? "" : string.Format(" --description {0}", description);
+            var cmd = string.Format("new-role --name \"{0}\"", roleName);
+            cmd += string.IsNullOrEmpty(description) ? "" : string.Format(" --description \"{0}\"", description);
             cmd += isPublic == null ? "" : string.Format(" --public {0}", isPublic);
             cmd += autoAssign == null ? "" : string.Format(" --autoassign {0}", autoAssign);
             cmd += status == null ? "" : string.Format(" --status {0}", status.ToString());

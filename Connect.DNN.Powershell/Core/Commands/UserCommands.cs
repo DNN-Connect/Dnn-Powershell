@@ -10,7 +10,7 @@ namespace Connect.DNN.Powershell.Core.Commands
     {
         public static UserRoleModel[] AddRoles(Data.Site site, int portalId, int userId, string roles, System.DateTime? start, System.DateTime? end)
         {
-            var cmd = string.Format("add-roles --id {0} --roles {1}", userId, roles);
+            var cmd = string.Format("add-roles --id {0} --roles \"{1}\"", userId, roles);
             cmd += start == null ? "" : string.Format(" --start {0:yyyy-MM-dd}", start);
             cmd += end == null ? "" : string.Format(" --start {0:yyyy-MM-dd}", end);
             var response = DnnPromptController.ProcessCommand(site, portalId, 5, cmd);
